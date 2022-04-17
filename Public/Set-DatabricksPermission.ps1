@@ -25,10 +25,10 @@
     For Secret Scopes this value must be READ, WRITE or MANAGE
 
 .PARAMETER DatabricksObjectType
-    Job, Cluster, secretScope or Instance-pool
+    Job, Cluster, secretScope, Instance-pool or endpoint
 
 .PARAMETER DatabricksObjectId
-    JobId, ClusterId, secretScope or Instance-poolId
+    JobId, ClusterId, secretScope, Instance-poolId or endpointId
 
 .EXAMPLE 
     C:\PS> Set-DatabricksPermission -BearerToken $BearerToken -Region $Region -Principal "MyTestGroup" -PermissionLevel 'CAN_MANAGE' -DatabricksObjectType 'Cluster' -DatabricksObjectId "tubby-1234"
@@ -49,7 +49,7 @@ Function Set-DatabricksPermission
         [parameter(Mandatory=$true)][string]$Principal,
         [parameter(Mandatory=$false)][ValidateSet('user_name','group_name','service_principal_name')][string]$PrincipalType = 'user_name',
         [Parameter(Mandatory=$true)][string]$PermissionLevel,
-        [Parameter(Mandatory=$true)][ValidateSet('job','cluster','instance-pool', 'secretScope')][string]$DatabricksObjectType,
+        [Parameter(Mandatory=$true)][ValidateSet('job','cluster','instance-pool', 'secretScope','endpoint')][string]$DatabricksObjectType,
         [Parameter(Mandatory=$true)][string]$DatabricksObjectId
     )
 
